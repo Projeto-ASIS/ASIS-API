@@ -1,3 +1,44 @@
+# *ASIS – Sistema Unificado de Assistência Social*  
+
+## 📖 Sobre o Projeto  
+
+O *ASIS* tem como objetivo desenvolver uma solução para o *Sistema Único de Assistência Social (SUAS), focada na digitalização e padronização do armazenamento de prontuários dos cidadãos atendidos pelos **Centros de Referência de Assistência Social (CRAS)*.  
+
+Atualmente, as unidades do CRAS operam de forma isolada, sem integração de dados, o que dificulta o acesso e a atualização das informações. O *ASIS* propõe a unificação desses dados, permitindo uma comunicação eficiente entre as unidades e eliminando registros descentralizados.  
+
+Além disso, será desenvolvida uma *plataforma web* para gerenciar essas informações, possibilitando:  
+
+- ✅ *Cadastro de cidadãos*  
+- ✅ *Consulta e atualização de dados*  
+- ✅ *Agendamento de atendimentos*  
+
+Este repositório contém o código do *back-end* da aplicação, desenvolvido com foco em:  
+
+- *🔄 Escalabilidade* – Suporte a um grande número de usuários, garantindo alto desempenho.  
+- *🔗 Integração* – API otimizada para comunicação eficiente com o front-end.  
+- *🎯 Usabilidade* – Interface intuitiva e eficiente para os usuários finais.  
+- *🛠️ Manutenibilidade* – Código modular e bem estruturado para facilitar ajustes e melhorias.  
+
+
+## 🌟 Diferenciais do Projeto  
+
+### 🚀 *Integração dos CRAS*  
+Os CRAS não compartilham dados entre si, o que dificulta o acompanhamento das famílias atendidas. Com o *ASIS, todas as unidades terão acesso a um banco de dados **unificado*, permitindo um atendimento mais ágil e eficaz.  
+
+### 📑 *Digitalização dos Processos*  
+Hoje, o agendamento e a entrevista para o *Cadastro Único (CadÚnico)* exigem a presença física do usuário e diversos documentos. Com a nova plataforma, será possível realizar *agendamentos online*, reduzindo burocracias e otimizando o fluxo de atendimento.  
+
+### 📂 *Prontuário Digitalizado*  
+Os prontuários físicos das famílias atendidas serão convertidos para um formato *digital, garantindo **acessibilidade* e *segurança* das informações.  
+
+### 🏠 *Agendamento de Visitas Domiciliares*  
+Atualmente realizadas de forma manual, as visitas domiciliares serão agendadas diretamente na plataforma, com *notificações automáticas* enviadas aos assistentes sociais. Além disso, o usuário será notificado assim que uma visita for agendada para sua residência, garantindo que ele esteja ciente e preparado para o atendimento.
+to e preparação para o atendimento.
+
+
+### 🔄 *Atualização Cadastral Simplificada*  
+Diferente da plataforma *Conecta Recife, que não permite atualizações cadastrais de forma integrada, o **ASIS* possibilitará que os dados dos usuários sejam *mantidos sempre atualizados* dentro do sistema.
+
 # Como Contribuir para o Repositório
 
 Agradecemos seu interesse em contribuir para o nosso repositório! Seguir as etapas abaixo nos ajuda a manter um processo organizado e a melhorar continuamente nosso projeto.
