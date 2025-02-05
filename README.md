@@ -4,13 +4,14 @@
 
 O *ASIS* tem como objetivo desenvolver uma solução para o *Sistema Único de Assistência Social (SUAS), focada na digitalização e padronização do armazenamento de prontuários dos cidadãos atendidos pelos **Centros de Referência de Assistência Social (CRAS)*.  
 
-Atualmente, as unidades do CRAS operam de forma isolada, sem integração de dados, o que dificulta o acesso e a atualização das informações. O *ASIS* propõe a unificação desses dados, permitindo uma comunicação eficiente entre as unidades e eliminando registros descentralizados.  
+Atualmente, as unidades do CRAS operam de forma isolada, sem integração de dados, o que dificulta o acesso e a atualização das informações. O *ASIS* propõe a unificação desses dados e centraliza o agendamento de serviços, permitindo uma comunicação eficiente entre as unidades, eliminando registros descentralizados e processos burocráticos, trazendo mais eficiência e organização para o atendimento às famílias.
+  
 
 Além disso, será desenvolvida uma *plataforma web* para gerenciar essas informações, possibilitando:  
 
 - ✅ *Cadastro de cidadãos*  
 - ✅ *Consulta e atualização de dados*  
-- ✅ *Agendamento de atendimentos*  
+- ✅ *Agendamento de atendimentos e serviços*  
 
 Este repositório contém o código do *back-end* da aplicação, desenvolvido com foco em:  
 
@@ -22,8 +23,14 @@ Este repositório contém o código do *back-end* da aplicação, desenvolvido c
 
 ## 🌟 Diferenciais do Projeto  
 
-### 🚀 *Integração dos CRAS*  
-Os CRAS não compartilham dados entre si, o que dificulta o acompanhamento das famílias atendidas. Com o *ASIS, todas as unidades terão acesso a um banco de dados **unificado*, permitindo um atendimento mais ágil e eficaz.  
+### 🚀 **Agendamento Unificado de Serviços**
+Atualmente, os **CRAS** enfrentam desafios no compartilhamento de dados, o que dificulta o **acompanhamento contínuo das famílias atendidas**. Com o **ASIS**, todas as unidades terão acesso a um **banco de dados unificado**, possibilitando um atendimento **mais ágil, eficaz e integrado**.
+
+O **ASIS** centraliza o agendamento de diversos serviços da assistência social, **eliminando processos burocráticos** e descentralizados, trazendo mais **eficiência** e **organização** para o atendimento às famílias.
+
+### 🛡️ **Combate à Violência de Direitos**  
+O **ASIS** não só visa melhorar a eficiência dos serviços prestados pelos **CRAS**, mas também desempenha um papel fundamental no **combate à violência de direitos**. A plataforma auxiliará na **identificação precoce de situações de risco** e na **implementação de medidas protetivas**, garantindo que os cidadãos atendidos sejam **monitorados e protegidos** de possíveis abusos, fortalecendo a **rede de proteção social**.
+
 
 ### 📑 *Digitalização dos Processos*  
 Hoje, o agendamento e a entrevista para o *Cadastro Único (CadÚnico)* exigem a presença física do usuário e diversos documentos. Com a nova plataforma, será possível realizar *agendamentos online*, reduzindo burocracias e otimizando o fluxo de atendimento.  
