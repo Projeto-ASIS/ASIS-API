@@ -1,0 +1,9 @@
+CREATE TABLE tb_endereco (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    UF VARCHAR(2) NOT NULL,
+    cidade VARCHAR(45) NOT NULL,
+    CEP VARCHAR(9),
+    numero INT NOT NULL,
+    logradouro VARCHAR(100) NOT NULL,
+    complemento VARCHAR(100) NOT NULL
+);
