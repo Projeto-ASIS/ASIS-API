@@ -2,7 +2,9 @@ package com.Asis.api.domain.servico.entity;
 
 import jakarta.persistence.*;
 import jakarta.persistence.criteria.CriteriaBuilder;
+import lombok.Data;
 
+@Data
 @Entity
 @Table(name = "tb_servico")
 public class ServicoEntity {

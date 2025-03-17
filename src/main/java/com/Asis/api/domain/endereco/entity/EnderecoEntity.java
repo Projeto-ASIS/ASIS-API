@@ -1,7 +1,9 @@
 package com.Asis.api.domain.endereco.entity;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
+@Data
 @Entity
 @Table(name = "tb_endereco")
 public class EnderecoEntity {
@@ -27,5 +29,6 @@ public class EnderecoEntity {
 
     @Column(length = 100, nullable = false)
     private String complemento;
+
 
 }
