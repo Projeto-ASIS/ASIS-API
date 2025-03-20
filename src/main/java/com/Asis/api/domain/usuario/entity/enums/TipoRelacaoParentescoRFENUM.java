@@ -1,6 +1,6 @@
 package com.Asis.api.domain.usuario.entity.enums;
 
-public enum tipoRelacaoParentescoRFENUM {
+public enum TipoRelacaoParentescoRFENUM {
 
     PESSOA_RESPONSAVEL_PELA_UNIDADE_FAMILIAR_RF (1),
     CONJUGE_OU_COMPANHEIROA (2),
@@ -16,15 +16,15 @@ public enum tipoRelacaoParentescoRFENUM {
 
     private int code;
 
-    private tipoRelacaoParentescoRFENUM(int code) {
+    private TipoRelacaoParentescoRFENUM(int code) {
         this.code = code;
     }
     public int getCode() {
         return code;
     }
 
-    public static tipoRelacaoParentescoRFENUM valueOf(int code) {
-        for (tipoRelacaoParentescoRFENUM value : tipoRelacaoParentescoRFENUM.values()){
+    public static TipoRelacaoParentescoRFENUM valueOf(int code) {
+        for (TipoRelacaoParentescoRFENUM value : TipoRelacaoParentescoRFENUM.values()){
             if (value.getCode() == code){
                 return value;
             }

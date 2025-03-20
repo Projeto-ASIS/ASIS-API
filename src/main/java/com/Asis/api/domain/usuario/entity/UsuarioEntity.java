@@ -1,7 +1,13 @@
 package com.Asis.api.domain.usuario.entity;
 
+import com.Asis.api.domain.usuario.entity.enums.CorRacaENUM;
+import com.Asis.api.domain.usuario.entity.enums.CursoMaisElevadoQueFrequentouENUM;
+import com.Asis.api.domain.usuario.entity.enums.TipoRelacaoParentescoRFENUM;
+import com.Asis.api.domain.usuario.entity.enums.UltimoAnoSerieNoCursoQueFrequentouENUM;
 import jakarta.persistence.*;
 import lombok.Data;
+
+import java.time.LocalDate;
 
 @Data
 @Entity
@@ -16,7 +22,7 @@ public class UsuarioEntity {
     private String nomeCompleto;
 
     @Column(name = "data_nascimento", nullable = false)
-    private java.sql.Date dataNascimento;
+    private LocalDate dataNascimento;
 
     @Column(name = "email", length = 100, nullable = false, unique = true)
     private String email;
@@ -36,23 +42,26 @@ public class UsuarioEntity {
     @Column(name = "nome_mae", length = 100)
     private String nomeMae;
 
+    @Enumerated(value = EnumType.ORDINAL)
     @Column(name = "cor_raca")
-    private Byte corRaca;
+    private CorRacaENUM corRaca;
 
     @Column(name = "possui_deficiencia")
     private Boolean possuiDeficiencia;
 
+    @Enumerated(value = EnumType.ORDINAL)
     @Column(name = "cursoMaisElevadoQueFrequentou")
-    private Byte cursoMaisElevadoQueFrequentou;
+    private CursoMaisElevadoQueFrequentouENUM cursoMaisElevadoQueFrequentou;
 
+    @Enumerated(value = EnumType.ORDINAL)
     @Column(name = "ultimoAnoSerieNoCursoQueFrequentou")
-    private Byte ultimoAnoSerieNoCursoQueFrequentou;
+    private UltimoAnoSerieNoCursoQueFrequentouENUM ultimoAnoSerieNoCursoQueFrequentou;
 
     @Column(name = "concluiuOCursoQueFrequentou")
-    private Boolean concluiuOCursoQueFrequentou;
+    private  Boolean concluiuOCursoQueFrequentou;
 
-    @Column(name = "sabeLerEscrever")
-    private Boolean sabeLerEscrever;
+    @Column(name = "sabeLerEEscrever")
+    private Boolean sabeLerEEscrever;
 
     @Column(name = "trabalhouSemanaAnteriorAEntrevista")
     private Boolean trabalhouSemanaAnteriorAEntrevista;
@@ -69,8 +78,8 @@ public class UsuarioEntity {
     @Column(name = "valorRecebidoAjudaOuDoacao")
     private Integer valorRecebidoAjudaOuDoacao;
 
-    @Column(name = "valorAposentadoriaPensaoPessoas")
-    private Integer valorAposentadoriaPensaoPessoas;
+    @Column(name = "valorAposentadoriaPensaoBpcLoas")
+    private Integer valorAposentadoriaPensaoBpcLoas;
 
     @Column(name = "valorSeguroDesemprego")
     private Integer valorSeguroDesemprego;
@@ -93,11 +102,12 @@ public class UsuarioEntity {
     @Column(name = "carteiraDeTrabalho", length = 200)
     private String carteiraDeTrabalho;
 
-    @Column(name = "responsavelFamiliar")
-    private Boolean responsavelFamiliar;
-
+    @Enumerated(value = EnumType.ORDINAL)
     @Column(name = "tipoRelacaoParentescoRF")
-    private Byte tipoRelacaoParentescoRF;
+    private TipoRelacaoParentescoRFENUM tipoRelacaoParentescoRF;
+
+    @Column
+    private Boolean responsavelFamiliar;
 
     @Column(name = "familia_id", nullable = false)
     private Integer familiaId;

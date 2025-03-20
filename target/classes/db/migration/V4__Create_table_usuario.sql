@@ -29,8 +29,8 @@ CREATE TABLE tb_usuario (
     tituloDeEleitor VARCHAR(200),
     certidaoDeNascimento VARCHAR(200),
     carteiraDeTrabalho VARCHAR(200),
-    responsavelFamliliar BOOLEAN,
     tipoRelacaoParentescoRF TINYINT,
+    responsavelFamiliar BOOLEAN,
     familia_id INT NOT NULL,
     FOREIGN KEY (familia_id) REFERENCES tb_familia(id)
 );

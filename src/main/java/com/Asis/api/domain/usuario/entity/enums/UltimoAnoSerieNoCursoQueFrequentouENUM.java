@@ -1,6 +1,6 @@
 package com.Asis.api.domain.usuario.entity.enums;
 
-public enum ultimoAnoSerieNoCursoQueFrequentouENUM {
+public enum UltimoAnoSerieNoCursoQueFrequentouENUM {
     PRIMEIRO (1),
     SEGUNDO (2),
     TERCEIRO (3),
@@ -14,15 +14,15 @@ public enum ultimoAnoSerieNoCursoQueFrequentouENUM {
 
     private int code;
 
-    private ultimoAnoSerieNoCursoQueFrequentouENUM(int code) {
+    private UltimoAnoSerieNoCursoQueFrequentouENUM(int code) {
         this.code = code;
     }
     public int getCode() {
         return code;
     }
 
-    public static ultimoAnoSerieNoCursoQueFrequentouENUM valueOf(int code) {
-        for (ultimoAnoSerieNoCursoQueFrequentouENUM value : ultimoAnoSerieNoCursoQueFrequentouENUM.values()){
+    public static UltimoAnoSerieNoCursoQueFrequentouENUM valueOf(int code) {
+        for (UltimoAnoSerieNoCursoQueFrequentouENUM value : UltimoAnoSerieNoCursoQueFrequentouENUM.values()){
             if (value.getCode() == code){
                 return value;
             }

@@ -1,6 +1,6 @@
 package com.Asis.api.domain.usuario.entity.enums;
 
-public enum cursoMaisElevadoQueFrequentouENUM {
+public enum CursoMaisElevadoQueFrequentouENUM {
 
     CRECHE (1),
     PRE_ESCOLA_EXCETO_CA (2),
@@ -20,15 +20,15 @@ public enum cursoMaisElevadoQueFrequentouENUM {
 
     private int code;
 
-    private cursoMaisElevadoQueFrequentouENUM(int code) {
+    private CursoMaisElevadoQueFrequentouENUM(int code) {
         this.code = code;
     }
     public int getCode() {
         return code;
     }
 
-    public static cursoMaisElevadoQueFrequentouENUM valueOf(int code) {
-        for (cursoMaisElevadoQueFrequentouENUM value : cursoMaisElevadoQueFrequentouENUM.values()){
+    public static CursoMaisElevadoQueFrequentouENUM valueOf(int code) {
+        for (CursoMaisElevadoQueFrequentouENUM value : CursoMaisElevadoQueFrequentouENUM.values()){
             if (value.getCode() == code){
                 return value;
             }

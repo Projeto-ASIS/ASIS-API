@@ -16,8 +16,8 @@ public enum CorRacaENUM {
         return code;
     }
 
-    public static ultimoAnoSerieNoCursoQueFrequentouENUM valueOf(int code) {
-        for (ultimoAnoSerieNoCursoQueFrequentouENUM value : ultimoAnoSerieNoCursoQueFrequentouENUM.values()){
+    public static UltimoAnoSerieNoCursoQueFrequentouENUM valueOf(int code) {
+        for (UltimoAnoSerieNoCursoQueFrequentouENUM value : UltimoAnoSerieNoCursoQueFrequentouENUM.values()){
             if (value.getCode() == code){
                 return value;
             }
