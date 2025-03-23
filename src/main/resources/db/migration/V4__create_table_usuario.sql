@@ -1,6 +1,7 @@
 -- Criando Tabela Usuario --
 CREATE TABLE tb_usuario (
-    id INT NOT NULL PRIMARY KEY,
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    role VARCHAR(5) NOT NULL DEFAULT 'USER',
     nome_completo VARCHAR(100) NOT NULL,
     data_nascimento DATE NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
@@ -31,7 +32,7 @@ CREATE TABLE tb_usuario (
     carteiraDeTrabalho VARCHAR(200),
     tipoRelacaoParentescoRF TINYINT,
     responsavelFamiliar BOOLEAN,
-    familia_id INT NOT NULL,
+    familia_id INT,
     FOREIGN KEY (familia_id) REFERENCES tb_familia(id)
 );
 

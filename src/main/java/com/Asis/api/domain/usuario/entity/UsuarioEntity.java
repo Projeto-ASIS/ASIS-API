@@ -1,22 +1,28 @@
 package com.Asis.api.domain.usuario.entity;
 
-import com.Asis.api.domain.usuario.entity.enums.CorRacaENUM;
-import com.Asis.api.domain.usuario.entity.enums.CursoMaisElevadoQueFrequentouENUM;
-import com.Asis.api.domain.usuario.entity.enums.TipoRelacaoParentescoRFENUM;
-import com.Asis.api.domain.usuario.entity.enums.UltimoAnoSerieNoCursoQueFrequentouENUM;
+import com.Asis.api.domain.usuario.entity.enums.*;
 import jakarta.persistence.*;
 import lombok.Data;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDate;
+import java.util.Collection;
+import java.util.List;
 
 @Data
 @Entity
 @Table(name = "tb_usuario")
-public class UsuarioEntity {
+public class UsuarioEntity implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @Column(name = "role")
+    @Enumerated(EnumType.STRING)
+    private RoleEnum role = RoleEnum.USER;
 
     @Column(name = "nome_completo", length = 100, nullable = false)
     private String nomeCompleto;
@@ -111,4 +117,25 @@ public class UsuarioEntity {
 
     @Column(name = "familia_id", nullable = false)
     private Integer familiaId;
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        if(role == RoleEnum.USER){
+            return List.of(new SimpleGrantedAuthority("USER"));
+        }
+        if(role == RoleEnum.ADMIN){
+            return List.of(new SimpleGrantedAuthority("USER"), new SimpleGrantedAuthority("ADMIN"));
+        }
+        return List.of();
     }
+
+    @Override
+    public String getPassword() {
+        return this.getSenha();
+    }
+
+    @Override
+    public String getUsername() {
+        return this.getCpf();
+    }
+}
