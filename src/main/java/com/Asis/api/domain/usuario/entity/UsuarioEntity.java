@@ -22,7 +22,7 @@ public class UsuarioEntity implements UserDetails {
 
     @Column(name = "role")
     @Enumerated(EnumType.STRING)
-    private RoleEnum role = RoleEnum.USER;
+    private RoleEnum role = RoleEnum.ROLE_USUARIO;
 
     @Column(name = "nome_completo", length = 100, nullable = false)
     private String nomeCompleto;
@@ -120,11 +120,11 @@ public class UsuarioEntity implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        if(role == RoleEnum.USER){
-            return List.of(new SimpleGrantedAuthority("USER"));
+        if(role == RoleEnum.ROLE_USUARIO){
+            return List.of(new SimpleGrantedAuthority("ROLE_USUARIO"));
         }
-        if(role == RoleEnum.ADMIN){
-            return List.of(new SimpleGrantedAuthority("USER"), new SimpleGrantedAuthority("ADMIN"));
+        if(role == RoleEnum.ROLE_FUNCIONARIO){
+            return List.of(new SimpleGrantedAuthority("ROLE_USUARIO"), new SimpleGrantedAuthority("ROLE_FUNCIONARIO"));
         }
         return List.of();
     }
