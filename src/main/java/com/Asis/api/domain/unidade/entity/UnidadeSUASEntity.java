@@ -1,7 +1,10 @@
-package com.Asis.api.domain.Unidade.entity;
+package com.Asis.api.domain.unidade.entity;
 
 import com.Asis.api.domain.endereco.entity.EnderecoEntity;
+import com.Asis.api.domain.funcionario.entity.FuncionarioEntity;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "tb_unidadeSUAS")
@@ -20,5 +23,12 @@ public class UnidadeSUASEntity {
     @ManyToOne
     @JoinColumn(name = "enderecoUnidade_id", nullable = false)
     private EnderecoEntity enderecoUnidade;
+
+    @OneToOne()
+    @JoinColumn(name = "gestor_id")
+    private FuncionarioEntity gestor;
+
+    @OneToMany(mappedBy = "unidade_id")
+    private List<UnidadeFuncionarioEntity> unidadeFuncionario;
 }
 
