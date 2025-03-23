@@ -1,7 +1,7 @@
 -- Criando Tabela Usuario --
 CREATE TABLE tb_usuario (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    role VARCHAR(5) NOT NULL DEFAULT 'USER',
+    role VARCHAR(16) NOT NULL DEFAULT 'ROLE_USUARIO',
     nome_completo VARCHAR(100) NOT NULL,
     data_nascimento DATE NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,

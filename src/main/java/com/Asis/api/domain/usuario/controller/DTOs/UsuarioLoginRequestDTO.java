@@ -2,9 +2,12 @@ package com.Asis.api.domain.usuario.controller.DTOs;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
-public class UsuarioLoginRequestDTO {
-    private String cpf;
-    private String senha;
+
+public record UsuarioLoginRequestDTO(
+        String cpf,
+        String senha
+) {
 }

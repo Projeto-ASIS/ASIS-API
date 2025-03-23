@@ -1,11 +1,10 @@
 package com.Asis.api.domain.usuario.controller.DTOs;
 
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
-public class UsuarioCadastroResponseDTO {
 
-    private final String status;
-    private final String createdAt;
+public record UsuarioCadastroResponseDTO(String status, String createdAt) {
 
 }
