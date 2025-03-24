@@ -20,6 +20,98 @@ Este repositório contém o código do *back-end* da aplicação, desenvolvido c
 - *🎯 Usabilidade* – Interface intuitiva e eficiente para os usuários finais.  
 - *🛠️ Manutenibilidade* – Código modular e bem estruturado para facilitar ajustes e melhorias.  
 
+## 📌 Modelo de Dados
+
+```mermaid
+erDiagram
+    UsuarioEntity {
+        Integer id
+        String nomeCompleto
+        LocalDate dataNascimento
+        String email
+        String senha
+        String cpf
+        String telefone1
+        String telefone2
+        String nomeMae
+        Integer familiaId
+    }
+    
+    EnderecoEntity {
+        Integer id
+        String UF
+        String cidade
+        String CEP
+        Integer numero
+        String logradouro
+        String complemento
+    }
+
+    FamiliaEntity {
+        Integer id
+        String nomeRF
+        Integer quantidadeIntegrantes
+        LocalDateTime ultimaAtualizacao
+        LocalDateTime dataCadastro
+        Integer rendaTotal
+        Integer rendaPerCapta
+        Boolean familiaIndigena
+        Boolean familiaQuilombola
+        Integer quantidadePessoasDomicilio
+        Integer quantidadeFamiliasDomicilio
+    }
+    
+    FuncionarioEntity {
+        Integer id
+        String cpf
+        String nome
+        String email
+        String senha
+    }
+    
+    ServicoEntity {
+        Integer id
+        String nome
+        String descricao
+        String comoAcessar
+        String linkAcesso
+    }
+    
+    AgendamentoEntity {
+        Integer id
+        LocalDateTime dataSolicitado
+        LocalDateTime dataResolvido
+        String descricao
+        Integer statusAgendamento
+    }
+    
+    UnidadeSUASEntity {
+        Integer id
+        String nome
+        Integer cadSuas
+    }
+
+    UnidadeFuncionarioEntity {
+        Integer id
+    }
+
+    UsuarioEntity ||--o| FamiliaEntity : pertence
+    FamiliaEntity ||--|{ EnderecoEntity : possui
+    FuncionarioEntity ||--o{ UnidadeFuncionarioEntity : trabalha
+    UnidadeSUASEntity ||--o{ UnidadeFuncionarioEntity : possui
+    AgendamentoEntity ||--|{ UsuarioEntity : possui
+    AgendamentoEntity ||--|{ ServicoEntity : possui
+    UnidadeSUASEntity ||--|{ EnderecoEntity : localizado
+```
+---
+### **Explicações sobre as relações**
+✔ **UsuarioEntity → FamiliaEntity**: Um usuário pertence a uma família.  
+✔ **FamiliaEntity → EnderecoEntity**: Uma família tem um endereço.  
+✔ **FuncionarioEntity → UnidadeFuncionarioEntity**: Funcionários são vinculados a unidades através dessa entidade intermediária.  
+✔ **UnidadeSUASEntity → UnidadeFuncionarioEntity**: Uma unidade pode ter vários funcionários.  
+✔ **AgendamentoEntity → UsuarioEntity e ServicoEntity**: Um agendamento é feito por um usuário e está ligado a um serviço.  
+✔ **UnidadeSUASEntity → EnderecoEntity**: Cada unidade do SUAS tem um endereço.
+
 
 ## 🌟 Diferenciais do Projeto  
 
