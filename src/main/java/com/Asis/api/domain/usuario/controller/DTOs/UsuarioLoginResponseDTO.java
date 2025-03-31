@@ -1,9 +1,6 @@
 package com.Asis.api.domain.usuario.controller.DTOs;
 
 import com.Asis.api.domain.usuario.entity.UsuarioEntity;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
 
 
 public record UsuarioLoginResponseDTO(

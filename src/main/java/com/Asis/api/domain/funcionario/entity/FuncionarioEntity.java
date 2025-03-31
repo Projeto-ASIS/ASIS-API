@@ -1,7 +1,6 @@
 package com.Asis.api.domain.funcionario.entity;
 
 import com.Asis.api.domain.unidade.entity.UnidadeFuncionarioEntity;
-import com.Asis.api.domain.unidade.entity.UnidadeSUASEntity;
 import jakarta.persistence.*;
 import lombok.Data;
 

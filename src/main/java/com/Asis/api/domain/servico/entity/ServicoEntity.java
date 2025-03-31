@@ -1,7 +1,6 @@
 package com.Asis.api.domain.servico.entity;
 
 import jakarta.persistence.*;
-import jakarta.persistence.criteria.CriteriaBuilder;
 import lombok.Data;
 
 @Data
