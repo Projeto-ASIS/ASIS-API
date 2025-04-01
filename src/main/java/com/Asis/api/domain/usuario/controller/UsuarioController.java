@@ -1,22 +1,23 @@
 package com.Asis.api.domain.usuario.controller;
 import com.Asis.api.domain.usuario.controller.DTOs.UsuarioCadastroRequestDTO;
 import com.Asis.api.domain.usuario.controller.DTOs.UsuarioCadastroResponseDTO;
+import com.Asis.api.domain.usuario.controller.DTOs.UsuarioDetailsResponseDTO;
 import com.Asis.api.domain.usuario.controller.DTOs.UsuarioLoginRequestDTO;
 import com.Asis.api.domain.usuario.controller.DTOs.UsuarioLoginResponseDTO;
 import com.Asis.api.domain.usuario.controller.mapper.UsuarioMapper;
 import com.Asis.api.domain.usuario.entity.UsuarioEntity;
 import com.Asis.api.domain.usuario.service.UsuarioService;
 import com.Asis.api.infra.security.TokenService;
-import com.Asis.api.utils.LocalDateTimeConverter;
+import com.Asis.api.utils.UtilsConverter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
-
 import java.time.LocalDateTime;
 import java.util.HashMap;
+import java.util.UUID;
 
 @RequiredArgsConstructor
 @RestController
@@ -36,7 +37,7 @@ public class UsuarioController {
 
         var response = new UsuarioCadastroResponseDTO(
                 HttpStatus.CREATED.name(),
-                LocalDateTimeConverter.dateTimeConverter(LocalDateTime.now())
+                UtilsConverter.dateTimeConverter(LocalDateTime.now())
         );
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
@@ -53,8 +54,17 @@ public class UsuarioController {
         return ResponseEntity.ok().body(response);
     }
 
+    @GetMapping("{id}")
+    public ResponseEntity<UsuarioDetailsResponseDTO> findAuthenticateUser(@PathVariable UUID id){
+
+        UsuarioEntity usuario = usuarioService.findAuthenticateUser(id);
+        UsuarioDetailsResponseDTO response = usuarioMapper.toUsuarioDetailsResponseDTO(usuario);
+
+        return ResponseEntity.ok(response);
+    }
+
     @GetMapping("testeUsuario")
-    public ResponseEntity<HashMap<String,String>> teste(){
+    public ResponseEntity<HashMap<String,String>> testimport(){
         var response = new HashMap<String,String>();
         response.put("RESPOSTA","PEGOU, USUARIO!");
         return ResponseEntity.ok().body(response);

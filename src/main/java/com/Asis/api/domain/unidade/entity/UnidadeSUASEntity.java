@@ -5,14 +5,15 @@ import com.Asis.api.domain.funcionario.entity.FuncionarioEntity;
 import jakarta.persistence.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Table(name = "tb_unidadeSUAS")
 public class UnidadeSUASEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID id;
 
     @Column(length = 100, nullable = false)
     private String nome;
