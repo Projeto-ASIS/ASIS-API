@@ -1,6 +1,9 @@
 package com.Asis.api.infra.security;
 
+import com.Asis.api.domain.usuario.entity.UsuarioEntity;
 import com.Asis.api.domain.usuario.repository.UsuarioRepository;
+import com.Asis.api.utils.UtilsConverter;
+
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -11,8 +14,9 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.filter.OncePerRequestFilter;
-
 import java.io.IOException;
+import java.util.Optional;
+import java.util.UUID;
 
 @Configuration
 @RequiredArgsConstructor
@@ -25,11 +29,12 @@ public class SecuriyFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         var token = recoverToken(request);
         if(token != null){
-            String cpf =  tokenService.validateToken(token);
-            UserDetails usuario = usuarioRepository.findByCpf(cpf);
+            String id = tokenService.validateToken(token);
+            Optional<UsuarioEntity> usuario = usuarioRepository.findById(UUID.fromString(id));
 
-            var authentication = new UsernamePasswordAuthenticationToken(usuario, null, usuario.getAuthorities());
-            System.out.println(usuario.getAuthorities());
+            var user = (UserDetails) usuario.get();
+
+            var authentication = new UsernamePasswordAuthenticationToken(usuario, null, user.getAuthorities());
             SecurityContextHolder.getContext().setAuthentication(authentication);
         }
 

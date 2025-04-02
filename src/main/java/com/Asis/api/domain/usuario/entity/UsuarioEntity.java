@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
+import java.util.UUID;
 
 @Data
 @Entity
@@ -17,8 +18,8 @@ import java.util.List;
 public class UsuarioEntity implements UserDetails {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID id;
 
     @Column(name = "role")
     @Enumerated(EnumType.STRING)
@@ -116,7 +117,7 @@ public class UsuarioEntity implements UserDetails {
     private Boolean responsavelFamiliar;
 
     @Column(name = "familia_id", nullable = false)
-    private Integer familiaId;
+    private UUID familiaId;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

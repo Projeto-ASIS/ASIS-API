@@ -27,7 +27,7 @@ public class TokenService {
 
             String token = JWT.create()
                     .withIssuer("asis-pi")
-                    .withSubject(user.getCpf())
+                    .withSubject(user.getId().toString())
                     .withExpiresAt(getExpirationDate())
                     .sign(algorithm);
 

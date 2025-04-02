@@ -7,14 +7,16 @@ public record UsuarioLoginResponseDTO(
          String nomeCompleto,
          String email,
          String token,
-         String role
+         String role,
+         String id
 ) {
     public UsuarioLoginResponseDTO(UsuarioEntity user, String token) {
         this(
                 user.getNomeCompleto(),
                 user.getEmail(),
                 token,
-                user.getRole().name()
+                user.getRole().name(),
+                user.getId().toString()
         );
     }
 }
