@@ -1,7 +1,5 @@
 package com.Asis.api.domain.endereco.entity;
 
-import java.util.UUID;
-
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -11,8 +9,8 @@ import lombok.Data;
 public class EnderecoEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(length = 2 , nullable = false)
     private String UF;

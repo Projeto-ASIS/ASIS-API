@@ -1,7 +1,7 @@
 -- Criando tabela de endereço
 
 CREATE TABLE tb_endereco (
-    id UUID NOT NULL PRIMARY KEY,
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
     UF VARCHAR(2) NOT NULL,
     cidade VARCHAR(45) NOT NULL,
     CEP VARCHAR(9),

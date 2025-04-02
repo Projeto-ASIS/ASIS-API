@@ -1,7 +1,5 @@
 package com.Asis.api.domain.servico.entity;
 
-import java.util.UUID;
-
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -11,8 +9,8 @@ import lombok.Data;
 public class ServicoEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
     @Column(length = 100, nullable = false)
     private String nome;

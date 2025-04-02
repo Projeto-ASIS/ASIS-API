@@ -28,7 +28,7 @@ public class UsuarioService implements UserDetailsService {
         return usuarioRepository.save(usuario);
     }
 
-    public UsuarioEntity findAuthenticateUser(UUID id){
+    public UsuarioEntity findAuthenticateUser(String id){
         Optional<UsuarioEntity> usuario = usuarioRepository.findById(id);
         System.out.println("ID PRESENTE: " + id.toString());
         if(!usuario.isPresent()) throw new UsuarioNotFoundException("Usuario não encontrado");        

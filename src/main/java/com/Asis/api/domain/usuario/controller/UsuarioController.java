@@ -17,7 +17,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 import java.util.HashMap;
-import java.util.UUID;
 
 @RequiredArgsConstructor
 @RestController
@@ -42,6 +41,8 @@ public class UsuarioController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
+
+
     @PostMapping("login")
     public ResponseEntity<UsuarioLoginResponseDTO> login(@RequestBody UsuarioLoginRequestDTO loginRequestDTO){
         var usernamePassword = new UsernamePasswordAuthenticationToken(loginRequestDTO.cpf(), loginRequestDTO.senha());
@@ -54,8 +55,10 @@ public class UsuarioController {
         return ResponseEntity.ok().body(response);
     }
 
+
+
     @GetMapping("{id}")
-    public ResponseEntity<UsuarioDetailsResponseDTO> findAuthenticateUser(@PathVariable UUID id){
+    public ResponseEntity<UsuarioDetailsResponseDTO> findAuthenticateUser(@PathVariable String id){
 
         UsuarioEntity usuario = usuarioService.findAuthenticateUser(id);
         UsuarioDetailsResponseDTO response = usuarioMapper.toUsuarioDetailsResponseDTO(usuario);
@@ -63,12 +66,16 @@ public class UsuarioController {
         return ResponseEntity.ok(response);
     }
 
+
+
     @GetMapping("testeUsuario")
     public ResponseEntity<HashMap<String,String>> testimport(){
         var response = new HashMap<String,String>();
         response.put("RESPOSTA","PEGOU, USUARIO!");
         return ResponseEntity.ok().body(response);
     }
+
+
 
     @GetMapping("testeFuncionario")
     public ResponseEntity<HashMap<String,String>> testeFuncionario(){

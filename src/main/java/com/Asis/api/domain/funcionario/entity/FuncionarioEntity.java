@@ -3,9 +3,7 @@ package com.Asis.api.domain.funcionario.entity;
 import com.Asis.api.domain.unidade.entity.UnidadeFuncionarioEntity;
 import jakarta.persistence.*;
 import lombok.Data;
-
 import java.util.List;
-import java.util.UUID;
 
 @Data
 @Entity
@@ -13,8 +11,8 @@ import java.util.UUID;
 public class FuncionarioEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private String id;
 
     @Column(nullable = false, length = 14)
     private String cpf;

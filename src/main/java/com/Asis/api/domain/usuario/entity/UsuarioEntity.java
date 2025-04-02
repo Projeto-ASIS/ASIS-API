@@ -1,16 +1,15 @@
 package com.Asis.api.domain.usuario.entity;
 
+import com.Asis.api.domain.familia.entity.FamiliaEntity;
 import com.Asis.api.domain.usuario.entity.enums.*;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
-import java.util.UUID;
 
 @Data
 @Entity
@@ -18,8 +17,8 @@ import java.util.UUID;
 public class UsuarioEntity implements UserDetails {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private String id;
 
     @Column(name = "role")
     @Enumerated(EnumType.STRING)
@@ -116,8 +115,9 @@ public class UsuarioEntity implements UserDetails {
     @Column
     private Boolean responsavelFamiliar;
 
-    @Column(name = "familia_id", nullable = false)
-    private UUID familiaId;
+    @ManyToOne
+    @JoinColumn(name="familia_id")
+    private FamiliaEntity familiaId;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

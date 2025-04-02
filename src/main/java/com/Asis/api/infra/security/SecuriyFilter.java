@@ -2,8 +2,6 @@ package com.Asis.api.infra.security;
 
 import com.Asis.api.domain.usuario.entity.UsuarioEntity;
 import com.Asis.api.domain.usuario.repository.UsuarioRepository;
-import com.Asis.api.utils.UtilsConverter;
-
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -16,7 +14,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.filter.OncePerRequestFilter;
 import java.io.IOException;
 import java.util.Optional;
-import java.util.UUID;
 
 @Configuration
 @RequiredArgsConstructor
@@ -30,7 +27,7 @@ public class SecuriyFilter extends OncePerRequestFilter {
         var token = recoverToken(request);
         if(token != null){
             String id = tokenService.validateToken(token);
-            Optional<UsuarioEntity> usuario = usuarioRepository.findById(UUID.fromString(id));
+            Optional<UsuarioEntity> usuario = usuarioRepository.findById(id);
 
             var user = (UserDetails) usuario.get();
 

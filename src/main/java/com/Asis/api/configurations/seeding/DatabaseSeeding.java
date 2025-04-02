@@ -3,16 +3,12 @@ package com.Asis.api.configurations.seeding;
 import com.Asis.api.domain.usuario.entity.UsuarioEntity;
 import com.Asis.api.domain.usuario.entity.enums.RoleEnum;
 import com.Asis.api.domain.usuario.repository.UsuarioRepository;
-import com.Asis.api.utils.UtilsConverter;
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
 import java.time.LocalDate;
 import java.util.List;
-import java.util.UUID;
 
 @RequiredArgsConstructor
 @Configuration

@@ -1,7 +1,7 @@
 -- Criando tabela família
 
 CREATE TABLE tb_familia (
-    id UUID NOT NULL PRIMARY KEY,
+    id VARCHAR(36) NOT NULL PRIMARY KEY,
     nomeRF VARCHAR(100) NOT NULL,
     quantidadeIntegrantes INTEGER NOT NULL,
     statusCadastral TINYINT NOT NULL,  
@@ -45,6 +45,6 @@ CREATE TABLE tb_familia (
     quantidadeInternadosAcima60 INTEGER NOT NULL,
     familiaRiscoInsegurancaAlimentar BOOLEAN NOT NULL,
     familiaSituacaoRua BOOLEAN NOT NULL,
-    enderecoFamilia_id UUID NOT NULL,
+    enderecoFamilia_id BIGINT NOT NULL,
     FOREIGN KEY(enderecoFamilia_id) REFERENCES tb_endereco(id)
 );
