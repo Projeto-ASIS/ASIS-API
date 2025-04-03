@@ -1,6 +1,5 @@
 package com.Asis.api.domain.usuario.entity;
 
-import com.Asis.api.domain.familia.entity.FamiliaEntity;
 import com.Asis.api.domain.usuario.entity.enums.*;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -47,77 +46,6 @@ public class UsuarioEntity implements UserDetails {
 
     @Column(name = "nome_mae", length = 100)
     private String nomeMae;
-
-    @Enumerated(value = EnumType.ORDINAL)
-    @Column(name = "cor_raca")
-    private CorRacaENUM corRaca;
-
-    @Column(name = "possui_deficiencia")
-    private Boolean possuiDeficiencia;
-
-    @Enumerated(value = EnumType.ORDINAL)
-    @Column(name = "cursoMaisElevadoQueFrequentou")
-    private CursoMaisElevadoQueFrequentouENUM cursoMaisElevadoQueFrequentou;
-
-    @Enumerated(value = EnumType.ORDINAL)
-    @Column(name = "ultimoAnoSerieNoCursoQueFrequentou")
-    private UltimoAnoSerieNoCursoQueFrequentouENUM ultimoAnoSerieNoCursoQueFrequentou;
-
-    @Column(name = "concluiuOCursoQueFrequentou")
-    private  Boolean concluiuOCursoQueFrequentou;
-
-    @Column(name = "sabeLerEEscrever")
-    private Boolean sabeLerEEscrever;
-
-    @Column(name = "trabalhouSemanaAnteriorAEntrevista")
-    private Boolean trabalhouSemanaAnteriorAEntrevista;
-
-    @Column(name = "estavaAfastadoTrabalhoSemanaAnteriorEntrevista")
-    private Boolean estavaAfastadoTrabalhoSemanaAnteriorEntrevista;
-
-    @Column(name = "remuneracaoTrabalhoMesAnteriorEntrevista")
-    private Boolean remuneracaoTrabalhoMesAnteriorEntrevista;
-
-    @Column(name = "teveTrabalhoRemunerado12MesesAnterioresEntrevista")
-    private Boolean teveTrabalhoRemunerado12MesesAnterioresEntrevista;
-
-    @Column(name = "valorRecebidoAjudaOuDoacao")
-    private Integer valorRecebidoAjudaOuDoacao;
-
-    @Column(name = "valorAposentadoriaPensaoBpcLoas")
-    private Integer valorAposentadoriaPensaoBpcLoas;
-
-    @Column(name = "valorSeguroDesemprego")
-    private Integer valorSeguroDesemprego;
-
-    @Column(name = "valorPensaoAlimenticia")
-    private Integer valorPensaoAlimenticia;
-
-    @Column(name = "outrasRendas")
-    private Integer outrasRendas;
-
-    @Column(name = "identidade", length = 200)
-    private String identidade;
-
-    @Column(name = "tituloDeEleitor", length = 200)
-    private String tituloDeEleitor;
-
-    @Column(name = "certidaoDeNascimento", length = 200)
-    private String certidaoDeNascimento;
-
-    @Column(name = "carteiraDeTrabalho", length = 200)
-    private String carteiraDeTrabalho;
-
-    @Enumerated(value = EnumType.ORDINAL)
-    @Column(name = "tipoRelacaoParentescoRF")
-    private TipoRelacaoParentescoRFENUM tipoRelacaoParentescoRF;
-
-    @Column
-    private Boolean responsavelFamiliar;
-
-    @ManyToOne
-    @JoinColumn(name="familia_id")
-    private FamiliaEntity familiaId;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

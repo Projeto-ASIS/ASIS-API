@@ -1,12 +1,9 @@
 package com.Asis.api.domain.usuario.service;
 
-import java.nio.charset.StandardCharsets;
 import java.util.Optional;
-import java.util.UUID;
 import com.Asis.api.domain.usuario.entity.UsuarioEntity;
 import com.Asis.api.domain.usuario.exception.businessException.UsuarioNotFoundException;
 import com.Asis.api.domain.usuario.repository.UsuarioRepository;
-import com.Asis.api.utils.UtilsConverter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
