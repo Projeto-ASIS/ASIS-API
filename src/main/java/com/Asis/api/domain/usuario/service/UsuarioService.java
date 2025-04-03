@@ -1,7 +1,12 @@
 package com.Asis.api.domain.usuario.service;
 
+import java.nio.charset.StandardCharsets;
+import java.util.Optional;
+import java.util.UUID;
 import com.Asis.api.domain.usuario.entity.UsuarioEntity;
+import com.Asis.api.domain.usuario.exception.businessException.UsuarioNotFoundException;
 import com.Asis.api.domain.usuario.repository.UsuarioRepository;
+import com.Asis.api.utils.UtilsConverter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -23,8 +28,17 @@ public class UsuarioService implements UserDetailsService {
         return usuarioRepository.save(usuario);
     }
 
+    public UsuarioEntity findAuthenticateUser(String id){
+        Optional<UsuarioEntity> usuario = usuarioRepository.findById(id);
+        System.out.println("ID PRESENTE: " + id.toString());
+        if(!usuario.isPresent()) throw new UsuarioNotFoundException("Usuario não encontrado");        
+        
+        return usuario.get();
+    }
+
     @Override
     public UserDetails loadUserByUsername(String cpf) throws UsernameNotFoundException {
-        return usuarioRepository.findByCpf(cpf);
+        return usuarioRepository
+            .findByCpf(cpf);
     }
 }

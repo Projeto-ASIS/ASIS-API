@@ -1,6 +1,8 @@
 package com.Asis.api.domain.agendamento.entity;
 
 import com.Asis.api.domain.agendamento.entity.enums.StatusAgendamento;
+import com.Asis.api.domain.funcionario.entity.FuncionarioEntity;
+import com.Asis.api.domain.servico.entity.ServicoEntity;
 import com.Asis.api.domain.usuario.entity.UsuarioEntity;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -35,9 +37,9 @@ public class AgendamentoEntity {
 
     @OneToOne()
     @JoinColumn(name = "servico_id", nullable = false)
-    private UsuarioEntity servico;
+    private ServicoEntity servico;
 
     @OneToOne()
     @JoinColumn(name = "funcionario_id")
-    private UsuarioEntity funcionario;
+    private FuncionarioEntity funcionario;
 }

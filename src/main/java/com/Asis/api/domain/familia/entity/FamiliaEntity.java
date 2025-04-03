@@ -4,7 +4,6 @@ import com.Asis.api.domain.endereco.entity.EnderecoEntity;
 import com.Asis.api.domain.familia.entity.enums.*;
 import jakarta.persistence.*;
 import lombok.Data;
-
 import java.time.LocalDateTime;
 
 @Data
@@ -13,8 +12,8 @@ import java.time.LocalDateTime;
 public class FamiliaEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private String id;
 
     @Column(length = 100, nullable = false)
     private String nomeRF;

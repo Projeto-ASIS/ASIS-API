@@ -1,10 +1,8 @@
 package com.Asis.api.domain.funcionario.entity;
 
 import com.Asis.api.domain.unidade.entity.UnidadeFuncionarioEntity;
-import com.Asis.api.domain.unidade.entity.UnidadeSUASEntity;
 import jakarta.persistence.*;
 import lombok.Data;
-
 import java.util.List;
 
 @Data
@@ -13,8 +11,8 @@ import java.util.List;
 public class FuncionarioEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private String id;
 
     @Column(nullable = false, length = 14)
     private String cpf;

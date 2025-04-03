@@ -3,7 +3,6 @@ package com.Asis.api.domain.unidade.entity;
 import com.Asis.api.domain.endereco.entity.EnderecoEntity;
 import com.Asis.api.domain.funcionario.entity.FuncionarioEntity;
 import jakarta.persistence.*;
-
 import java.util.List;
 
 @Entity

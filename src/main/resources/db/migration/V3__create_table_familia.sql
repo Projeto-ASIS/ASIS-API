@@ -1,7 +1,7 @@
 -- Criando tabela família
 
 CREATE TABLE tb_familia (
-    id BIGINT NOT NULL PRIMARY KEY,
+    id VARCHAR(36) NOT NULL PRIMARY KEY,
     nomeRF VARCHAR(100) NOT NULL,
     quantidadeIntegrantes INTEGER NOT NULL,
     statusCadastral TINYINT NOT NULL,  
