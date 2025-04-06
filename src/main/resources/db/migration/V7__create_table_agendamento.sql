@@ -2,8 +2,8 @@
 
 CREATE TABLE tb_agendamento(
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    data_solicitado DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    data_resolvido DATETIME NULL,
+    data_solicitado DATE NOT NULL,
+    data_atendimento DATE NULL,
     descricao VARCHAR(200) NULL,
     status_agendamento TINYINT NOT NULL DEFAULT 1,
     servico_id INTEGER NOT NULL,

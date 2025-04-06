@@ -3,7 +3,7 @@
 CREATE TABLE tb_unidade_suas (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(45) NOT NULL,
-    cad_suas INT NOT NULL UNIQUE,
+    cadsuas INT NOT NULL UNIQUE,
     endereco_unidade_id BIGINT NOT NULL,
     gestor_id VARCHAR(36) NOT NULL,
     UNIQUE(gestor_id),

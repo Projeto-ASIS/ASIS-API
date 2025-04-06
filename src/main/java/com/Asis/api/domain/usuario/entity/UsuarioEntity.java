@@ -1,8 +1,11 @@
 package com.Asis.api.domain.usuario.entity;
 
+import com.Asis.api.domain.endereco.entity.EnderecoEntity;
 import com.Asis.api.domain.usuario.entity.enums.*;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -10,7 +13,8 @@ import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
 
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "tb_usuario")
 public class UsuarioEntity implements UserDetails {
@@ -29,6 +33,15 @@ public class UsuarioEntity implements UserDetails {
     @Column(name = "data_nascimento", nullable = false)
     private LocalDate dataNascimento;
 
+    @Column(name = "nis", length = 14)
+    private String nis;
+
+    @Column(name = "cadunico", length = 12)
+    private String cadunico;
+
+    @Column(name = "deficiencia")
+    private TipoDeficienciaEnum deficiencia;
+
     @Column(name = "email", length = 100, nullable = false, unique = true)
     private String email;
 
@@ -46,6 +59,10 @@ public class UsuarioEntity implements UserDetails {
 
     @Column(name = "nome_mae", length = 100)
     private String nomeMae;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "endereco_id", referencedColumnName = "id")
+    private EnderecoEntity endereco;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

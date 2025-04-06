@@ -1,16 +1,18 @@
 package com.Asis.api.domain.servico.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "tb_servico")
 public class ServicoEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private int id;
 
     @Column(length = 100, nullable = false)
     private String nome;
@@ -18,10 +20,10 @@ public class ServicoEntity {
     @Column(length = 500, nullable = false)
     private String descricao;
 
-    @Column(length = 500, nullable = false)
+    @Column(length = 500, nullable = false, name = "como_acessar")
     private String comoAcessar;
 
-    @Column(length = 100, nullable = true)
+    @Column(length = 100, nullable = true, name = "link_acesso")
     private String linkAcesso;
 
 }
