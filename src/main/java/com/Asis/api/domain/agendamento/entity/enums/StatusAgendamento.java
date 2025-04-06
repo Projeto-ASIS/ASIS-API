@@ -2,8 +2,7 @@ package com.Asis.api.domain.agendamento.entity.enums;
 
 public enum StatusAgendamento {
     PENDENTE(1),
-    EM_ATENDIMENTO(2),
-    FINALIZADO(3);
+    FINALIZADO(2);
 
     private int code;
 

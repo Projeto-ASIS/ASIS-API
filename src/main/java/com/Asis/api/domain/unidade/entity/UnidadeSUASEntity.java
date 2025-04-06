@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "tb_unidadeSUAS")
+@Table(name = "tb_unidade_suas")
 public class UnidadeSUASEntity {
 
     @Id
@@ -17,10 +17,10 @@ public class UnidadeSUASEntity {
     private String nome;
 
     @Column(nullable = false, unique = true)
-    private int cadSuas;
+    private int cadsuas;
 
     @ManyToOne
-    @JoinColumn(name = "enderecoUnidade_id", nullable = false)
+    @JoinColumn(name = "endereco_unidade_id", nullable = false)
     private EnderecoEntity enderecoUnidade;
 
     @OneToOne()

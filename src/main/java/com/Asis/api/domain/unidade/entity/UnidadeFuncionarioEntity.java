@@ -3,9 +3,11 @@ package com.Asis.api.domain.unidade.entity;
 import com.Asis.api.domain.funcionario.entity.FuncionarioEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "tb_unidade_funcionario")
 public class UnidadeFuncionarioEntity {

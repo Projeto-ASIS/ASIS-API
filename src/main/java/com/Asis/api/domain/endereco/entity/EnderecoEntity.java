@@ -1,9 +1,11 @@
 package com.Asis.api.domain.endereco.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "tb_endereco")
 public class EnderecoEntity {

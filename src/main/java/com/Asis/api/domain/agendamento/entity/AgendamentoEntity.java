@@ -5,11 +5,12 @@ import com.Asis.api.domain.funcionario.entity.FuncionarioEntity;
 import com.Asis.api.domain.servico.entity.ServicoEntity;
 import com.Asis.api.domain.usuario.entity.UsuarioEntity;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import java.time.LocalDate;
 
-import java.time.LocalDateTime;
-
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "tb_agendamento")
 public class AgendamentoEntity {
@@ -19,17 +20,16 @@ public class AgendamentoEntity {
     private Long id;
 
     @Column(nullable = false, name = "data_solicitado")
-    private LocalDateTime dataSolicitado;
+    private LocalDate dataSolicitado = LocalDate.now();
 
-    @Column(name = "data_resolvido")
-    private LocalDateTime dataResolvido;
+    @Column(name = "data_atendimento")
+    private LocalDate dataAtendimento;
 
-    @Column(nullable = false, length = 200)
+    @Column(length = 200)
     private String descricao;
 
-    @Column(nullable = false, name = "status_agendamento")
-    @Enumerated(EnumType.ORDINAL)
-    private StatusAgendamento statusAgendamento;
+    @Column(name = "status_agendamento")
+    private byte statusAgendamento = (byte)StatusAgendamento.PENDENTE.getCode();
 
     @OneToOne()
     @JoinColumn(name = "usuario_id", nullable = false)
