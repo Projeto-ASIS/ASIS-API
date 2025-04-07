@@ -1,7 +1,7 @@
 package com.Asis.api.domain.agendamento.service;
 
 import org.springframework.stereotype.Service;
-
+import com.Asis.api.domain.agendamento.controller.DTOs.AgendamentoResponseDTO;
 import com.Asis.api.domain.agendamento.controller.DTOs.AgendamentoRequestDTO;
 import com.Asis.api.domain.agendamento.entity.AgendamentoEntity;
 import com.Asis.api.domain.agendamento.exception.businessException.AgendamentoJaExisteException;
@@ -13,6 +13,9 @@ import com.Asis.api.domain.usuario.repository.UsuarioRepository;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -61,4 +64,25 @@ public class AgendamentoService {
 
     }
 
-}
+    public List<AgendamentoResponseDTO> buscarTodos() {
+        return agendamentoRepository.findAll().stream()
+                .map(agendamento -> new AgendamentoResponseDTO(
+                        agendamento.getDataAtendimento(),
+                        mapearStatusParaNumero(String.valueOf(agendamento.getStatusAgendamento())),
+                        agendamento.getUsuario().getNomeCompleto()
+                ))
+                .collect(Collectors.toList());
+    }
+
+    private int mapearStatusParaNumero(String status) {
+        return switch (status) {
+            case "1" -> 1;
+            case "2" -> 2;
+            default -> 0;
+        };
+    }
+
+    }
+
+
+

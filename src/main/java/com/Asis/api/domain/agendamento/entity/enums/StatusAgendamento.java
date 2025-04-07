@@ -22,4 +22,5 @@ public enum StatusAgendamento {
         }
         throw new IllegalArgumentException("Invalid FormaEscoamentoDomicilio code: " + code);
     }
+
 }
