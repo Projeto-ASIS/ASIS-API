@@ -184,12 +184,29 @@ public class DatabaseSeeding implements CommandLineRunner {
         funcionario15.setSenha(encoder.encode("funcionario"));
         funcionario15.setEmail("funcionario15@gmail.com");
         funcionario15.setDataNascimento(LocalDate.now().minusYears(26));
+
+        UsuarioEntity funcionario16 = new UsuarioEntity();
+        funcionario16.setCpf("55655695405");
+        funcionario16.setNomeCompleto("Edson Carvalho Amorin");
+        funcionario16.setRole(RoleEnum.ROLE_FUNCIONARIO);
+        funcionario16.setSenha(encoder.encode("funcionario"));
+        funcionario16.setEmail("funcionario16@gmail.com");
+        funcionario16.setDataNascimento(LocalDate.now().minusYears(36));
+
+        UsuarioEntity funcionario17 = new UsuarioEntity();
+        funcionario17.setCpf("55655652405");
+        funcionario17.setNomeCompleto("Edson Carvalho Amorin");
+        funcionario17.setRole(RoleEnum.ROLE_FUNCIONARIO);
+        funcionario17.setSenha(encoder.encode("funcionario"));
+        funcionario17.setEmail("funcionario17@gmail.com");
+        funcionario17.setDataNascimento(LocalDate.now().minusYears(36));
         
 
         usuarioRepository.saveAll(List.of(
             funcionario1, funcionario2, funcionario3, funcionario4, funcionario5, 
             funcionario6, funcionario7, funcionario8, funcionario9, funcionario10, 
-            funcionario11, funcionario12, funcionario13, funcionario14, funcionario15
+            funcionario11, funcionario12, funcionario13, funcionario14, funcionario15,
+            funcionario16, funcionario17
         ));
 
 
@@ -339,25 +356,25 @@ public class DatabaseSeeding implements CommandLineRunner {
         agendamento1.setFuncionario(usuario);
         agendamento1.setUnidade(unidade1);
 
+        AgendamentoEntity agendamento2 = new AgendamentoEntity();
+        agendamento2.setDataAtendimento(LocalDate.now().plusDays(3L));
+        agendamento2.setServico(servico4);
+        agendamento2.setFuncionario(usuario2);
+        agendamento2.setUnidade(unidade2);
+
         AgendamentoEntity agendamento3 = new AgendamentoEntity();
         agendamento3.setDataAtendimento(LocalDate.now().plusDays(3L));
         agendamento3.setServico(servico4);
-        agendamento3.setFuncionario(usuario2);
+        agendamento3.setFuncionario(usuario3);
         agendamento3.setUnidade(unidade2);
 
         AgendamentoEntity agendamento4 = new AgendamentoEntity();
         agendamento4.setDataAtendimento(LocalDate.now().plusDays(3L));
         agendamento4.setServico(servico4);
-        agendamento4.setFuncionario(usuario3);
+        agendamento4.setFuncionario(usuario4);
         agendamento4.setUnidade(unidade2);
 
-        AgendamentoEntity agendamento5 = new AgendamentoEntity();
-        agendamento5.setDataAtendimento(LocalDate.now().plusDays(3L));
-        agendamento5.setServico(servico4);
-        agendamento5.setFuncionario(usuario4);
-        agendamento5.setUnidade(unidade2);
 
-
-        agendamentoRepository.save(agendamento1);
+        agendamentoRepository.saveAll(List.of(agendamento1, agendamento2, agendamento3, agendamento4));
     }
 }
