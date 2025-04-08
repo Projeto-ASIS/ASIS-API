@@ -1,9 +1,9 @@
 package com.Asis.api.domain.usuario.controller;
-import com.Asis.api.domain.usuario.controller.DTOs.UsuarioCadastroRequestDTO;
-import com.Asis.api.domain.usuario.controller.DTOs.UsuarioCadastroResponseDTO;
-import com.Asis.api.domain.usuario.controller.DTOs.UsuarioDetailsResponseDTO;
-import com.Asis.api.domain.usuario.controller.DTOs.UsuarioLoginRequestDTO;
-import com.Asis.api.domain.usuario.controller.DTOs.UsuarioLoginResponseDTO;
+import com.Asis.api.domain.usuario.controller.DTOs.request.UsuarioCadastroRequestDTO;
+import com.Asis.api.domain.usuario.controller.DTOs.request.UsuarioLoginRequestDTO;
+import com.Asis.api.domain.usuario.controller.DTOs.response.UsuarioCadastroResponseDTO;
+import com.Asis.api.domain.usuario.controller.DTOs.response.UsuarioDetailsResponseDTO;
+import com.Asis.api.domain.usuario.controller.DTOs.response.UsuarioLoginResponseDTO;
 import com.Asis.api.domain.usuario.controller.mapper.UsuarioMapper;
 import com.Asis.api.domain.usuario.entity.UsuarioEntity;
 import com.Asis.api.domain.usuario.service.UsuarioService;

@@ -1,6 +1,6 @@
 package com.Asis.api.domain.unidade.entity;
 
-import com.Asis.api.domain.funcionario.entity.FuncionarioEntity;
+import com.Asis.api.domain.usuario.entity.UsuarioEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -12,17 +12,20 @@ import lombok.Setter;
 @Table(name = "tb_unidade_funcionario")
 public class UnidadeFuncionarioEntity {
 
-    @Id
+    @EmbeddedId
+    private UnidadeFuncionarioId id;
+
+    @MapsId(value = "usuarioId")
     @ManyToOne()
     @JsonIgnore()
-    @JoinColumn(name = "funcionario_id")
-    private FuncionarioEntity funcionario_id;
+    @JoinColumn(name = "usuario_id")
+    private UsuarioEntity usuario;
 
-    @Id
+    @MapsId(value = "unidadeId")
     @ManyToOne()
     @JsonIgnore()
     @JoinColumn(name = "unidade_id")
-    private UnidadeSUASEntity unidade_id;
+    private UnidadeSUASEntity unidade;
 
     @Column(length = 45)
     private String funcao;

@@ -1,4 +1,4 @@
-package com.Asis.api.domain.agendamento.controller.DTOs;
+package com.Asis.api.domain.agendamento.controller.DTOs.request;
 
 import java.time.LocalDate;
 

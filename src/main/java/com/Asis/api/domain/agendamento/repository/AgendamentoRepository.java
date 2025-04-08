@@ -8,6 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface AgendamentoRepository extends JpaRepository<AgendamentoEntity,Long> {
 
-    boolean existsByDataAtendimentoAndUsuario_id(LocalDate dataAtendimento, String id);
+    boolean existsByDataAtendimentoAndFuncionario_id(LocalDate dataAtendimento, String id);
 
 }

@@ -1,14 +1,13 @@
 package com.Asis.api.domain.agendamento.controller;
 
-import com.Asis.api.domain.agendamento.controller.DTOs.AgendamentoResponseDTO;
-import com.Asis.api.domain.agendamento.entity.AgendamentoEntity;
+import com.Asis.api.domain.agendamento.controller.DTOs.request.AgendamentoRequestDTO;
+import com.Asis.api.domain.agendamento.controller.DTOs.response.AgendamentoResponseDTO;
 import java.util.List;
-import com.Asis.api.domain.agendamento.entity.AgendamentoEntity;
 import org.hibernate.annotations.Any;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.Asis.api.domain.agendamento.controller.DTOs.AgendamentoRequestDTO;
+
 import com.Asis.api.domain.agendamento.service.AgendamentoService;
 import lombok.RequiredArgsConstructor;
 

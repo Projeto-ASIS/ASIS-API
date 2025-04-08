@@ -1,4 +1,4 @@
-package com.Asis.api.domain.usuario.controller.DTOs;
+package com.Asis.api.domain.usuario.controller.DTOs.request;
 
 
 import java.time.LocalDate;
