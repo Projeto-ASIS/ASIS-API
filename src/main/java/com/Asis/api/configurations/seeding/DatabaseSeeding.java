@@ -5,7 +5,6 @@ import com.Asis.api.domain.agendamento.repository.AgendamentoRepository;
 import com.Asis.api.domain.endereco.entity.EnderecoEntity;
 import com.Asis.api.domain.servico.entity.ServicoEntity;
 import com.Asis.api.domain.servico.repository.ServicoRepository;
-import com.Asis.api.domain.unidade.entity.UnidadeFuncionarioEntity;
 import com.Asis.api.domain.unidade.entity.UnidadeSUASEntity;
 import com.Asis.api.domain.unidade.repository.UnidadeSUASRepository;
 import com.Asis.api.domain.usuario.entity.UsuarioEntity;
@@ -353,25 +352,25 @@ public class DatabaseSeeding implements CommandLineRunner {
         AgendamentoEntity agendamento1 = new AgendamentoEntity();
         agendamento1.setDataAtendimento(LocalDate.now().plusDays(2L));
         agendamento1.setServico(servico1);
-        agendamento1.setFuncionario(usuario);
+        agendamento1.setUsuario(usuario);
         agendamento1.setUnidade(unidade1);
 
         AgendamentoEntity agendamento2 = new AgendamentoEntity();
-        agendamento2.setDataAtendimento(LocalDate.now().plusDays(3L));
+        agendamento2.setDataAtendimento(LocalDate.now().plusDays(1L));
         agendamento2.setServico(servico4);
-        agendamento2.setFuncionario(usuario2);
+        agendamento2.setUsuario(usuario2);
         agendamento2.setUnidade(unidade2);
 
         AgendamentoEntity agendamento3 = new AgendamentoEntity();
-        agendamento3.setDataAtendimento(LocalDate.now().plusDays(3L));
+        agendamento3.setDataAtendimento(LocalDate.now().plusDays(1L));
         agendamento3.setServico(servico4);
-        agendamento3.setFuncionario(usuario3);
+        agendamento3.setUsuario(usuario3);
         agendamento3.setUnidade(unidade2);
 
         AgendamentoEntity agendamento4 = new AgendamentoEntity();
-        agendamento4.setDataAtendimento(LocalDate.now().plusDays(3L));
+        agendamento4.setDataAtendimento(LocalDate.now().plusDays(1L));
         agendamento4.setServico(servico4);
-        agendamento4.setFuncionario(usuario4);
+        agendamento4.setUsuario(usuario4);
         agendamento4.setUnidade(unidade2);
 
 

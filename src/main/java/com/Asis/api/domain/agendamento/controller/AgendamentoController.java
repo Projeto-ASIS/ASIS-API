@@ -1,14 +1,17 @@
 package com.Asis.api.domain.agendamento.controller;
 
 import com.Asis.api.domain.agendamento.controller.DTOs.request.AgendamentoRequestDTO;
-import com.Asis.api.domain.agendamento.controller.DTOs.response.AgendamentoResponseDTO;
+import com.Asis.api.domain.agendamento.controller.DTOs.response.AgendamentosResponseDTO;
+import com.Asis.api.domain.agendamento.entity.AgendamentoEntity;
+import java.time.LocalDate;
 import java.util.List;
 import org.hibernate.annotations.Any;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import com.Asis.api.domain.agendamento.service.AgendamentoService;
+import com.Asis.api.utils.UtilsMapping;
+
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -25,10 +28,14 @@ public class AgendamentoController {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
-    @GetMapping
-    public ResponseEntity<List<AgendamentoResponseDTO>> listarTodos() {
-        List<AgendamentoResponseDTO> agendamentos = agendamentoService.buscarTodos();
-        return ResponseEntity.ok(agendamentos);
+    @GetMapping()
+    public ResponseEntity<List<AgendamentosResponseDTO>> listarTodos(
+            @RequestParam LocalDate dataAtendimento,
+            @RequestParam Integer unidadeId) {
+
+        List<AgendamentoEntity> agendamentos = agendamentoService.buscaAgendamentos(dataAtendimento, (unidadeId));
+        var response = UtilsMapping.agendamentosToResponseDTO(agendamentos);
+        return ResponseEntity.ok(response);
     }
 
 }

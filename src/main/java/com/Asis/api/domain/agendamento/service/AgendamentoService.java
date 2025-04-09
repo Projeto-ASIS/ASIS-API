@@ -3,18 +3,20 @@ package com.Asis.api.domain.agendamento.service;
 import org.springframework.stereotype.Service;
 
 import com.Asis.api.domain.agendamento.controller.DTOs.request.AgendamentoRequestDTO;
-import com.Asis.api.domain.agendamento.controller.DTOs.response.AgendamentoResponseDTO;
 import com.Asis.api.domain.agendamento.entity.AgendamentoEntity;
 import com.Asis.api.domain.agendamento.exception.businessException.AgendamentoJaExisteException;
+import com.Asis.api.domain.agendamento.exception.businessException.UnidadeNaoExisteException;
 import com.Asis.api.domain.agendamento.repository.AgendamentoRepository;
 import com.Asis.api.domain.endereco.entity.EnderecoEntity;
 import com.Asis.api.domain.servico.repository.ServicoRepository;
+import com.Asis.api.domain.unidade.entity.UnidadeSUASEntity;
+import com.Asis.api.domain.unidade.repository.UnidadeSUASRepository;
 import com.Asis.api.domain.usuario.repository.UsuarioRepository;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import java.time.LocalDate;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -23,6 +25,7 @@ public class AgendamentoService {
     private final AgendamentoRepository agendamentoRepository;
     private final UsuarioRepository usuarioRepository;
     private final ServicoRepository servicoRepository;
+    private final UnidadeSUASRepository unidadeSUASRepository;
 
     @Transactional
     public AgendamentoEntity save(AgendamentoRequestDTO request, String id) {
@@ -56,22 +59,15 @@ public class AgendamentoService {
 
     }
 
-    public List<AgendamentoResponseDTO> buscarTodos() {
-        return agendamentoRepository.findAll().stream()
-                .map(agendamento -> new AgendamentoResponseDTO(
-                        agendamento.getDataAtendimento(),
-                        mapearStatusParaNumero(String.valueOf(agendamento.getStatusAgendamento())),
-                        agendamento.getFuncionario().getNomeCompleto()
-                ))
-                .collect(Collectors.toList());
-    }
+    public List<AgendamentoEntity> buscaAgendamentos(LocalDate dataAgendamento, Integer idUnidade) {
+        System.out.println("O ID ESTÁ CHEANDO AQUI: " + idUnidade);
 
-    private int mapearStatusParaNumero(String status) {
-        return switch (status) {
-            case "1" -> 1;
-            case "2" -> 2;
-            default -> 0;
-        };
+
+        unidadeSUASRepository.findById(idUnidade).orElseThrow(
+            ()-> new UnidadeNaoExisteException("Unidade do CRAS não existe"));
+
+        
+        return agendamentoRepository.findByDataAtendimentoAndUnidade_id(dataAgendamento, idUnidade);
     }
 
     }

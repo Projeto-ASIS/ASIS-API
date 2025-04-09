@@ -16,6 +16,6 @@ public class UnidadeFuncionarioId implements Serializable {
     private String usuarioId;
 
     @Column(name = "unidade_id")
-    private Long unidadeId;
+    private Integer unidadeId;
 
 }

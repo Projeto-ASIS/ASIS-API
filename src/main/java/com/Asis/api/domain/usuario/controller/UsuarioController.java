@@ -8,7 +8,7 @@ import com.Asis.api.domain.usuario.controller.mapper.UsuarioMapper;
 import com.Asis.api.domain.usuario.entity.UsuarioEntity;
 import com.Asis.api.domain.usuario.service.UsuarioService;
 import com.Asis.api.infra.security.TokenService;
-import com.Asis.api.utils.UtilsConverter;
+import com.Asis.api.utils.UtilsConvert;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -36,7 +36,7 @@ public class UsuarioController {
 
         var response = new UsuarioCadastroResponseDTO(
                 HttpStatus.CREATED.name(),
-                UtilsConverter.dateTimeConverter(LocalDateTime.now())
+                UtilsConvert.dateTimeConverter(LocalDateTime.now())
         );
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }

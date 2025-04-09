@@ -1,7 +1,7 @@
 -- Criando tabela de unidade
 
 CREATE TABLE tb_unidade_suas (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    id INTEGER AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(45) NOT NULL,
     cadsuas VARCHAR(11) NOT NULL UNIQUE,
     endereco_unidade_id BIGINT NOT NULL,

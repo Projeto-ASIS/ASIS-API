@@ -33,6 +33,10 @@ public class AgendamentoEntity {
 
     @OneToOne()
     @JoinColumn(name = "usuario_id", nullable = false)
+    private UsuarioEntity usuario;
+
+    @OneToOne()
+    @JoinColumn(name = "funcionario_id", nullable = false)
     private UsuarioEntity funcionario;
 
     @OneToOne()
