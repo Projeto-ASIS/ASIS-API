@@ -42,6 +42,18 @@ public class UsuarioService implements UserDetailsService {
         return usuario.get();
     }
 
+
+
+    public UsuarioEntity buscaUsuarioPeloEmail(String email){
+        return usuarioRepository.findByEmail(email);
+    }
+
+
+    
+    public UsuarioEntity atualizarSenha(UsuarioEntity entity){
+        return usuarioRepository.save(entity);
+    }
+
     @Override
     public UserDetails loadUserByUsername(String cpf) throws UsernameNotFoundException {
         return usuarioRepository.findByCpf(cpf);

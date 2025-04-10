@@ -10,13 +10,16 @@ public record UsuarioCadastroRequestDTO(
         String nomeCompleto,
         String senha,
         String cpf,
+        String email,
         LocalDate dataNascimento) {
 
         public static UsuarioEntity toEntity(UsuarioCadastroRequestDTO dto){
                 var entity = new UsuarioEntity();
                 entity.setNomeCompleto(dto.nomeCompleto());
+                entity.setSenha(dto.senha());
                 entity.setCpf(dto.cpf());
                 entity.setDataNascimento(dto.dataNascimento());
+                entity.setEmail(dto.email());
                 return entity;
         }
 

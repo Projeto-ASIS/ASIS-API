@@ -23,38 +23,32 @@ public class UsuarioController {
     private final AuthenticationManager authenticationManager;
     private final TokenService tokenService;
 
-
     @PostMapping("cadastro")
-    public ResponseEntity<String> registrarUsuario(@RequestBody UsuarioCadastroRequestDTO usuario){
+    public ResponseEntity<String> registrarUsuario(@RequestBody UsuarioCadastroRequestDTO usuario) {
 
         UsuarioEntity user = UsuarioCadastroRequestDTO.toEntity(usuario);
-        
+
         usuarioService.registrarUsuario(user);
 
         return ResponseEntity.status(HttpStatus.CREATED).body("Usuário cadastrado com sucesso");
     }
 
-
-
     @PostMapping("login")
-    public ResponseEntity<UsuarioLoginResponseDTO> login(@RequestBody UsuarioLoginRequestDTO loginRequestDTO){
+    public ResponseEntity<UsuarioLoginResponseDTO> login(@RequestBody UsuarioLoginRequestDTO loginRequestDTO) {
         var usernamePassword = new UsernamePasswordAuthenticationToken(loginRequestDTO.cpf(), loginRequestDTO.senha());
         var auth = authenticationManager.authenticate(usernamePassword);
         var usuario = (UsuarioEntity) auth.getPrincipal();
         var token = tokenService.generateToken((UsuarioEntity) auth.getPrincipal());
 
-
-        UsuarioLoginResponseDTO response = new UsuarioLoginResponseDTO(usuario,token);
+        UsuarioLoginResponseDTO response = new UsuarioLoginResponseDTO(usuario, token);
         return ResponseEntity.ok().body(response);
     }
 
-
-
     @GetMapping("{id}")
-    public ResponseEntity<UsuarioDetalhesResponseDTO> buscarUsuario(@PathVariable String id){
+    public ResponseEntity<UsuarioDetalhesResponseDTO> buscarUsuario(@PathVariable String id) {
 
         UsuarioEntity usuario = usuarioService.buscarUsuario(id);
-        
+
         var response = new UsuarioDetalhesResponseDTO(usuario);
 
         return ResponseEntity.ok(response);
