@@ -1,4 +1,4 @@
-package com.Asis.api.domain.usuario.controller.DTOs.request;
+package com.Asis.api.domain.usuario.controller.DTO.request;
 
 
 public record UsuarioLoginRequestDTO(

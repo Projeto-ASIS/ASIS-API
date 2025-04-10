@@ -1,22 +1,18 @@
 package com.Asis.api.domain.usuario.controller;
-import com.Asis.api.domain.usuario.controller.DTOs.request.UsuarioCadastroRequestDTO;
-import com.Asis.api.domain.usuario.controller.DTOs.request.UsuarioLoginRequestDTO;
-import com.Asis.api.domain.usuario.controller.DTOs.response.UsuarioCadastroResponseDTO;
-import com.Asis.api.domain.usuario.controller.DTOs.response.UsuarioDetailsResponseDTO;
-import com.Asis.api.domain.usuario.controller.DTOs.response.UsuarioLoginResponseDTO;
-import com.Asis.api.domain.usuario.controller.mapper.UsuarioMapper;
+
+import com.Asis.api.domain.usuario.controller.DTO.request.UsuarioCadastroRequestDTO;
+import com.Asis.api.domain.usuario.controller.DTO.request.UsuarioLoginRequestDTO;
+import com.Asis.api.domain.usuario.controller.DTO.response.UsuarioDetalhesResponseDTO;
+import com.Asis.api.domain.usuario.controller.DTO.response.UsuarioLoginResponseDTO;
 import com.Asis.api.domain.usuario.entity.UsuarioEntity;
 import com.Asis.api.domain.usuario.service.UsuarioService;
 import com.Asis.api.infra.security.TokenService;
-import com.Asis.api.utils.UtilsConvert;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
-import java.time.LocalDateTime;
-import java.util.HashMap;
 
 @RequiredArgsConstructor
 @RestController
@@ -25,20 +21,17 @@ public class UsuarioController {
 
     private final UsuarioService usuarioService;
     private final AuthenticationManager authenticationManager;
-    private final UsuarioMapper usuarioMapper;
     private final TokenService tokenService;
 
 
     @PostMapping("cadastro")
-    public ResponseEntity<UsuarioCadastroResponseDTO> save(@RequestBody UsuarioCadastroRequestDTO usuario){
-        UsuarioEntity user = usuarioMapper.dtoToEntity(usuario);
-        usuarioService.save(user);
+    public ResponseEntity<String> registrarUsuario(@RequestBody UsuarioCadastroRequestDTO usuario){
 
-        var response = new UsuarioCadastroResponseDTO(
-                HttpStatus.CREATED.name(),
-                UtilsConvert.dateTimeConverter(LocalDateTime.now())
-        );
-        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+        UsuarioEntity user = UsuarioCadastroRequestDTO.toEntity(usuario);
+        
+        usuarioService.registrarUsuario(user);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body("Usuário cadastrado com sucesso");
     }
 
 
@@ -58,10 +51,11 @@ public class UsuarioController {
 
 
     @GetMapping("{id}")
-    public ResponseEntity<UsuarioDetailsResponseDTO> findAuthenticateUser(@PathVariable String id){
+    public ResponseEntity<UsuarioDetalhesResponseDTO> buscarUsuario(@PathVariable String id){
 
-        UsuarioEntity usuario = usuarioService.findAuthenticateUser(id);
-        UsuarioDetailsResponseDTO response = usuarioMapper.toUsuarioDetailsResponseDTO(usuario);
+        UsuarioEntity usuario = usuarioService.buscarUsuario(id);
+        
+        var response = new UsuarioDetalhesResponseDTO(usuario);
 
         return ResponseEntity.ok(response);
     }

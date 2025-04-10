@@ -3,6 +3,7 @@ package com.Asis.api.infra.security;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -38,11 +39,23 @@ public class SecurityConfig {
                         .requestMatchers("/swagger-ui/**").permitAll()
                         .requestMatchers("/h2-console/**").permitAll()
 
-                        .requestMatchers("/agendamentos/registrar/{id}").hasRole("USUARIO")
-                        .requestMatchers("/usuarios/testeUsuario").hasAnyRole("USUARIO", "FUNCIONARIO")
-                        .requestMatchers("/usuarios/testeFuncionario").hasRole("FUNCIONARIO")
+                        //USUARIOS
+                        .requestMatchers(HttpMethod.POST, "/usuarios/registrar").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/usuarios/login").permitAll()
+
+                        //AGENDAMENTO
+                        .requestMatchers(HttpMethod.POST, "/agendamentos/registrar/{id}").hasRole("USUARIO")
+                        .requestMatchers(HttpMethod.GET, "/agendamentos/{id}").hasRole("FUNCIONARIO")
+                        .requestMatchers(HttpMethod.GET, "/agendamentos").hasRole("FUNCIONARIO")
+
+                        //SERVICO
+                        .requestMatchers(HttpMethod.GET, "/servicos").hasRole("FUNCIONARIO")
+
+                        //UNIDADES
+                        .requestMatchers("/unidades").hasAnyRole("FUNCIONARIO", "USUARIO")
 
                         .anyRequest().permitAll())
+                        
                 .headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin))
                 .addFilterBefore(securiyFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
