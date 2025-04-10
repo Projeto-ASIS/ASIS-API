@@ -7,5 +7,5 @@ CREATE TABLE tb_endereco (
     CEP VARCHAR(9),
     numero INT NOT NULL,
     logradouro VARCHAR(100) NOT NULL,
-    complemento VARCHAR(100) NOT NULL
+    complemento VARCHAR(100) NULL
 );

@@ -1,14 +1,13 @@
 package com.Asis.api.domain.agendamento.controller;
 
-import org.hibernate.annotations.Any;
+import com.Asis.api.domain.agendamento.controller.DTO.request.AgendamentoRequestDTO;
+import com.Asis.api.domain.agendamento.controller.DTO.response.AgendamentosResponseDTO;
+import com.Asis.api.domain.agendamento.entity.AgendamentoEntity;
+import java.time.LocalDate;
+import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import com.Asis.api.domain.agendamento.controller.DTOs.AgendamentoRequestDTO;
+import org.springframework.web.bind.annotation.*;
 import com.Asis.api.domain.agendamento.service.AgendamentoService;
 import lombok.RequiredArgsConstructor;
 
@@ -18,12 +17,28 @@ import lombok.RequiredArgsConstructor;
 public class AgendamentoController {
 
     private final AgendamentoService agendamentoService;
-    
-    @PostMapping("registrar/{id}")
-    public ResponseEntity<Any> agendar(@RequestBody AgendamentoRequestDTO request, @PathVariable String id){
 
-        agendamentoService.save(request, id);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+    
+    @PostMapping("/registrar/{id}")
+    public ResponseEntity<String> agendar(@RequestBody AgendamentoRequestDTO request, @PathVariable String id) {
+
+        agendamentoService.registraAgendamento(request, id);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body("Agendamento realizado com sucesso.");
+    }
+
+
+
+    @GetMapping
+    public ResponseEntity<List<AgendamentosResponseDTO>> listarAgendamentos(
+            @RequestParam LocalDate dataAtendimento,
+            @RequestParam Integer unidadeId) {
+
+        List<AgendamentoEntity> agendamentos = agendamentoService.buscaAgendamentos(dataAtendimento, (unidadeId));
+
+        var response = AgendamentosResponseDTO.agendamentosToListResponseDTO(agendamentos);
+
+        return ResponseEntity.ok(response);
     }
 
 }

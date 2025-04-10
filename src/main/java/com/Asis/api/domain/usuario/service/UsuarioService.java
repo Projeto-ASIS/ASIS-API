@@ -2,9 +2,10 @@ package com.Asis.api.domain.usuario.service;
 
 import java.util.Optional;
 import com.Asis.api.domain.usuario.entity.UsuarioEntity;
-import com.Asis.api.domain.usuario.exception.businessException.UsuarioNotFoundException;
 import com.Asis.api.domain.usuario.repository.UsuarioRepository;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -18,24 +19,43 @@ public class UsuarioService implements UserDetailsService {
     private final UsuarioRepository usuarioRepository;
     private final PasswordEncoder encoder;
 
-    public UsuarioEntity save(UsuarioEntity usuario){
-        usuario.setSenha(
-                encoder.encode(usuario.getPassword())
-        );
+
+    public UsuarioEntity registrarUsuario(UsuarioEntity usuario){
+        
+        if(usuarioRepository.findByCpf(usuario.getCpf()) != null){
+            throw new DuplicateKeyException("CPF já cadastrado");
+        }
+
+        usuario.setSenha(encoder.encode(usuario.getPassword()));
+
         return usuarioRepository.save(usuario);
     }
 
-    public UsuarioEntity findAuthenticateUser(String id){
+
+
+    public UsuarioEntity buscarUsuario(String id){
+
         Optional<UsuarioEntity> usuario = usuarioRepository.findById(id);
-        System.out.println("ID PRESENTE: " + id.toString());
-        if(!usuario.isPresent()) throw new UsuarioNotFoundException("Usuario não encontrado");        
+
+        if(!usuario.isPresent()) throw new EntityNotFoundException("Usuario não encontrado");        
         
         return usuario.get();
     }
 
+
+
+    public UsuarioEntity buscaUsuarioPeloEmail(String email){
+        return usuarioRepository.findByEmail(email);
+    }
+
+
+    
+    public UsuarioEntity atualizarSenha(UsuarioEntity entity){
+        return usuarioRepository.save(entity);
+    }
+
     @Override
     public UserDetails loadUserByUsername(String cpf) throws UsernameNotFoundException {
-        return usuarioRepository
-            .findByCpf(cpf);
+        return usuarioRepository.findByCpf(cpf);
     }
 }

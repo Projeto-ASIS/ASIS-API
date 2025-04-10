@@ -2,11 +2,13 @@ package com.Asis.api.domain.endereco.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
 @Entity
+@NoArgsConstructor
 @Table(name = "tb_endereco")
 public class EnderecoEntity {
 
@@ -32,5 +34,11 @@ public class EnderecoEntity {
     @Column(length = 100, nullable = false)
     private String complemento;
 
-
+    public EnderecoEntity(String UF, String cidade, String CEP, int numero, String logradouro) {
+        this.UF = UF;
+        this.cidade = cidade;
+        this.CEP = CEP;
+        this.numero = numero;
+        this.logradouro = logradouro;
+    }
 }

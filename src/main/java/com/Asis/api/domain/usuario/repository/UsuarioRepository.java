@@ -10,4 +10,12 @@ public interface UsuarioRepository extends JpaRepository<UsuarioEntity,String> {
 
     UserDetails findByCpf(String cpf);
 
+    UsuarioEntity findByEmail(String email);
+
+    boolean existsByEmail(String email);
+
+    boolean existsByNis(String nis);
+
+    boolean existsByCadunico(String cadunico);
+
 }
