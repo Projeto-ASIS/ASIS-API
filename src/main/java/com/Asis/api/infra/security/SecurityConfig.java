@@ -49,7 +49,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/agendamentos").hasRole("FUNCIONARIO")
 
                         //SERVICO
-                        .requestMatchers(HttpMethod.GET, "/servicos").hasRole("FUNCIONARIO")
+                        .requestMatchers(HttpMethod.GET, "/servicos").hasRole("FUNCIONARIO, USUARIO")
 
                         //UNIDADES
                         .requestMatchers("/unidades").hasAnyRole("FUNCIONARIO", "USUARIO")
