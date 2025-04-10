@@ -32,7 +32,7 @@ public class DatabaseSeeding implements CommandLineRunner {
 
         // CADASTANDO USUÁRIOS COMUNS NO SISTEMA
         UsuarioEntity usuario = new UsuarioEntity();
-        usuario.setCpf("15436537213");
+        usuario.setCpf("70766299414");
         usuario.setNomeCompleto("Huann Vicente");
         usuario.setSenha(encoder.encode("Azxc123@"));
         usuario.setEmail("huannvicente14@outlook.com");

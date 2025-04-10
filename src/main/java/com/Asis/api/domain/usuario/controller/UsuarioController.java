@@ -65,23 +65,4 @@ public class UsuarioController {
 
         return ResponseEntity.ok(response);
     }
-
-
-
-    @GetMapping("testeUsuario")
-    public ResponseEntity<HashMap<String,String>> testimport(){
-        var response = new HashMap<String,String>();
-        response.put("RESPOSTA","PEGOU, USUARIO!");
-        return ResponseEntity.ok().body(response);
-    }
-
-
-
-    @GetMapping("testeFuncionario")
-    public ResponseEntity<HashMap<String,String>> testeFuncionario(){
-        var response = new HashMap<String,String>();
-        response.put("RESPOSTA","PEGOU, FUNCIONARIO!");
-        return ResponseEntity.ok().body(response);
-    }
-
 }
