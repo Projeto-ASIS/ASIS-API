@@ -12,8 +12,6 @@ CREATE TABLE tb_usuario (
     cpf VARCHAR(14) NOT NULL UNIQUE,
     telefone1 VARCHAR(16),
     telefone2 VARCHAR(16),
-    nome_mae VARCHAR(100),
-    endereco_id BIGINT NULL,
-    FOREIGN KEY(endereco_id) REFERENCES tb_endereco(id)
+    nome_mae VARCHAR(100)
 );
 

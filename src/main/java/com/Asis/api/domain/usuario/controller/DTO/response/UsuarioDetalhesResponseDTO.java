@@ -1,7 +1,6 @@
 package com.Asis.api.domain.usuario.controller.DTO.response;
 
 import java.time.LocalDate;
-import com.Asis.api.domain.endereco.entity.EnderecoEntity;
 import com.Asis.api.domain.usuario.entity.UsuarioEntity;
 
 public record UsuarioDetalhesResponseDTO(
@@ -15,8 +14,7 @@ public record UsuarioDetalhesResponseDTO(
     String cpf,
     String telefone1,
     String telefone2,
-    String nomeMae,
-    EnderecoEntity endereco
+    String nomeMae
 ) {
 
     public UsuarioDetalhesResponseDTO(UsuarioEntity entity){
@@ -31,8 +29,7 @@ public record UsuarioDetalhesResponseDTO(
             entity.getCpf(),
             entity.getTelefone1(),
             entity.getTelefone2(),
-            entity.getNomeMae(),
-            entity.getEndereco()
+            entity.getNomeMae()
         );
     }
 }

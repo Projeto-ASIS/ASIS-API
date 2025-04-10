@@ -7,7 +7,6 @@ import com.Asis.api.domain.agendamento.entity.AgendamentoEntity;
 import com.Asis.api.domain.agendamento.exception.businessException.AgendamentoJaExisteException;
 import com.Asis.api.domain.agendamento.exception.businessException.DataAtendimentoInvalidoException;
 import com.Asis.api.domain.agendamento.repository.AgendamentoRepository;
-import com.Asis.api.domain.endereco.entity.EnderecoEntity;
 import com.Asis.api.domain.servico.repository.ServicoRepository;
 import com.Asis.api.domain.unidade.repository.UnidadeSUASRepository;
 import com.Asis.api.domain.usuario.repository.UsuarioRepository;
@@ -39,19 +38,6 @@ public class AgendamentoService {
                 () -> new EntityNotFoundException("Unidade do CRAS não existe"));
 
 
-        if (request.cadunico() != null && usuarioRepository.existsByCadunico(request.cadunico())) {
-            throw new DuplicateKeyException("Número do CadÚnico já cadastrado no sistema");
-        }
-
-        if (request.nis() != null && usuarioRepository.existsByNis(request.nis())) {
-            throw new DuplicateKeyException("Número do NIS já cadastrado no sistema");
-        }
-
-        if (request.email() != null && usuarioRepository.existsByEmail(request.email())) {
-            throw new DuplicateKeyException("E-mail já cadastrado no sistema");
-        }
-
-
         if (request.dataAtendimento().isBefore(LocalDate.now())) {
             throw new DataAtendimentoInvalidoException("A data do atendimento não pode ser anterior a data atual");
         }
@@ -61,23 +47,13 @@ public class AgendamentoService {
             throw new AgendamentoJaExisteException("Já existe um atendimento agendado para esta data");
         }
 
-        var endereco = new EnderecoEntity();
-        endereco.setCEP(request.endereco().CEP());
-        endereco.setCidade(request.endereco().cidade());
-        endereco.setComplemento(request.endereco().complemento());
-        endereco.setUF(request.endereco().UF());
-        endereco.setNumero(request.endereco().numero());
-        endereco.setLogradouro(request.endereco().logradouro());
-
         var agendamento = new AgendamentoEntity();
         agendamento.setDataAtendimento(request.dataAtendimento());
         agendamento.setUsuario(usuario);
         agendamento.setServico(servico);
         agendamento.setUnidade(unidade);
 
-        usuario.setEndereco(endereco);
         usuario.setCadunico(request.cadunico());
-        usuario.setEmail(request.email());
         usuario.setNis(request.nis());
         usuario.setNomeMae(request.nomeMae());
         usuario.setTelefone1(request.telefone1());

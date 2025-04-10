@@ -1,6 +1,5 @@
 package com.Asis.api.domain.usuario.entity;
 
-import com.Asis.api.domain.endereco.entity.EnderecoEntity;
 import com.Asis.api.domain.usuario.entity.enums.*;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -59,9 +58,6 @@ public class UsuarioEntity implements UserDetails {
     @Column(name = "nome_mae", length = 100)
     private String nomeMae;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "endereco_id", referencedColumnName = "id")
-    private EnderecoEntity endereco;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
